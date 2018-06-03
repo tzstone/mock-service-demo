@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "mock-service-demo",
+      "script": "./mock/index.js",
+      "cwd": "./",
+      "watch": [
+        "mock"
+      ],
+      "watch_options": {
+        "usePolling": true
+      }
+    }
+  ]
+}
