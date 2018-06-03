@@ -24,6 +24,7 @@ npm run mock
 
 ## 项目目录
 
+<pre>
 |---- mock  // mock文件夹
   |--- modules  // api模块文件
     |---app.js
@@ -31,6 +32,7 @@ npm run mock
   |---config.js // 配置mock服务器端口及转发域名
   |---index.js  // mock入口文件
   |---random.js // 随机mock数据函数
+</pre>
 
 ## api模块文件配置
 
