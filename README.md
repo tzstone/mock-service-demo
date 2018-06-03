@@ -1,6 +1,6 @@
 # mock-service-demo
 
-实现一个本地mock服务器, 本地请求先经过mock服务器, 如果path匹配成功且该path开启了mock配置项则返回mock数据, 否则对请求进行转发(可根据配置转发至本地或远程服务器)
+实现一个本地mock服务器, 本地请求指向mock服务器(如配置axios.defaults.baseURL为mock服务器地址), 如果path匹配成功且该path开启了mock配置项则返回mock数据, 否则对请求进行转发(可根据配置转发至本地或远程服务器)
 
 ## 功能
 

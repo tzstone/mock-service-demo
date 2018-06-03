@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// 将所有请求指向本地mock服务器
 axios.defaults.baseURL = 'http://localhost:9527';
 
 //添加请求拦截器
