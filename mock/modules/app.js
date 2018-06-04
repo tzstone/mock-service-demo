@@ -1,7 +1,7 @@
 module.exports = {
   '/api/info': {
-    delay: 0,
-    mock: false,
+    delay: 2,
+    mock: true,
     data: {
       email: '@email'
     }
