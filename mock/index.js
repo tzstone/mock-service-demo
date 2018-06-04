@@ -6,17 +6,30 @@ var config = require('./config')
 var random = require('./random')
 
 // CORS
-app.all('*', function(req, res, next) {  
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Max-Age", 1728000)
-  res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With,content-type")
-  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
-  res.header("Access-Control-Allow-Credentials", true)
-  res.header("Content-Type", "application/json;charset=utf-8")
+app.all('*', function(req, res, next) {
+  let requestOrigin = req.get('Origin')
 
-  if (req.method === 'OPTIONS') return res.send(200)
+  if (!requestOrigin) return next()
 
-  next();
+  if (req.method === 'OPTIONS') {
+    let allowHeaders = req.get('Access-Control-Request-Headers')
+
+    if (allowHeaders) {
+      res.header("Access-Control-Allow-Headers", allowHeaders)
+    }
+
+    res.header("Access-Control-Allow-Origin", requestOrigin)
+    // res.header("Access-Control-Max-Age", 1728000)
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+    res.header("Access-Control-Allow-Credentials", true)
+
+    res.send(204)
+  } else {
+    res.header("Access-Control-Allow-Origin", requestOrigin)
+    res.header("Access-Control-Allow-Credentials", true)
+
+    next()
+  }
 });
 
 glob.sync(path.join(__dirname, './modules/*.js')).forEach(file => {
