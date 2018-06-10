@@ -2,6 +2,7 @@ import axios from 'axios'
 
 // 将所有请求指向本地mock服务器
 axios.defaults.baseURL = 'http://localhost:9527';
+axios.defaults.withCredentials = true; // 允许携带cookie
 
 //添加请求拦截器
 axios.interceptors.request.use(function(config) {
